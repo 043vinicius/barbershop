@@ -1,100 +1,145 @@
+/* ========== CUSTOM ANIMATIONS ========== */
 
-    body {
-      font-family: 'Montserrat', sans-serif;
-      scroll-behavior: smooth;
-    }
+/* Fade Up */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-    /* NAVBAR */
-    .navbar {
-      background: #111;
-    }
-    .navbar .nav-link {
-      color: #ddd;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-    .navbar .nav-link:hover {
-      color: #198754;
-    }
-    .navbar-brand {
-      font-weight: 800;
-      letter-spacing: 1px;
-    }
+/* Fade Down */
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-    /* HERO */
-    .hero {
-      height: 100vh;
-      /* use public/img/baebearia.jpg img */
-      background: url('public/img/barbearia.jpg') no-repeat center center/cover;
-      position: relative;
-    }
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.6);
-    }
-    .hero > div {
-      position: relative;
-      z-index: 2;
-      animation: fadeIn 1.2s ease-in-out;
-    }
-    @keyframes fadeIn {
-      from {opacity:0; transform: translateY(20px);}
-      to {opacity:1; transform: translateY(0);}
-    }
+.animate-fade-up {
+  animation: fadeUp 0.8s ease-out both;
+}
 
-    /* Títulos */
-    h2 {
-      font-weight: 700;
-      position: relative;
-      display: inline-block;
-    }
-    h2::after {
-      content: "";
-      display: block;
-      width: 60px;
-      height: 4px;
-      background: #198754;
-      margin: 10px auto 0;
-      border-radius: 2px;
-    }
+.animate-fade-down {
+  animation: fadeDown 0.8s ease-out both;
+}
 
-    /* Cards */
-    .card {
-      border: none;
-      border-radius: 15px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    }
-    .card svg {
-      color: #198754;
-    }
+.animation-delay-200 {
+  animation-delay: 0.2s;
+}
 
-    /* Botão principal */
-    .btn-custom {
-      background: #198754;
-      border: none;
-      color: #fff;
-      font-weight: 600;
-      transition: background 0.3s;
-    }
-    .btn-custom:hover {
-      background: #146c43;
-      color: #fff;
-    }
+.animation-delay-400 {
+  animation-delay: 0.4s;
+}
 
-    footer {
-      font-size: 0.9rem;
-    }
-  
-    .descricao {
-        min-height: 90px;
-    }
+/* ========== NAV LINK HOVER ========== */
+.nav-link-custom {
+  position: relative;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.3s ease;
+}
 
-    .servico {
-        padding: 10px;
-    }
+.nav-link-custom:hover {
+  color: #d4a853;
+}
+
+.nav-link-custom::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #d4a853;
+  transition: width 0.3s ease;
+}
+
+.nav-link-custom:hover::after {
+  width: 100%;
+}
+
+/* ========== NAVBAR SCROLL STATE ========== */
+.navbar-scrolled {
+  background: rgba(10, 10, 10, 0.95) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+/* ========== SCROLL REVEAL ========== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========== FILL for star icons (Lucide workaround) ========== */
+[data-lucide="star"] {
+  fill: #d4a853;
+  stroke: #d4a853;
+}
+
+/* ========== WHATSAPP FLOAT PULSE ========== */
+#whatsapp-float::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 9999px;
+  background: rgba(34, 197, 94, 0.3);
+  animation: waPulse 2s ease-in-out infinite;
+}
+
+@keyframes waPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0;
+  }
+}
+
+/* ========== SELECTION COLOR ========== */
+::selection {
+  background: rgba(212, 168, 83, 0.3);
+  color: #fff;
+}
+
+/* ========== CUSTOM SCROLLBAR ========== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(212, 168, 83, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 168, 83, 0.5);
+}
+
+/* ========== SMOOTH SCROLL FOR HTML ========== */
+html {
+  scroll-behavior: smooth;
+}
